@@ -27,6 +27,13 @@ class Books:
         data.pop('csrf_token')
         self.books[id] = data
         self.save_all()
+    
+    def reload_json(self):
+        try:
+            with open("books.json", 'r') as f:
+                self.book = json.load(f)
+        except FileNotFoundError:
+            self.books = []
 
     def last_id(self):
         if self.books:

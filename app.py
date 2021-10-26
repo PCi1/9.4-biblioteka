@@ -15,6 +15,8 @@ def books_list():
         if form.validate_on_submit():
             books.create(form.data)
             books.save_all()
+            books.reload_json()
+            books.last_id()
         elif form2.validate_on_submit():
             authors.create(form2.data)
             authors.save_all()

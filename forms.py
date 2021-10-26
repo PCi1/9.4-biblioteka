@@ -5,6 +5,7 @@ import json
 from models import books
 
 choices_list=[]
+books_list = []
 # wiem że ten kod nie powinien się to znajdować ale z jakiegoś powodu wstawienie tego kodu do models powoduje że lista autorów jest aktualizowana tylko co restart servera,
 # to co zrobiłem poniżej to jedyny sposób który znajazłem na to by to działało tak jak chcę
 def reload_authors():
@@ -17,7 +18,6 @@ def reload_authors():
     for author in authors_list:
         choices_list.append(f"{author.get('first_name')} {author.get('last_name')}")
 reload_authors()
-
 
 class BookForm(FlaskForm):
 # chciałem tutaj dodać "id=hiddenfield("id", default=books.all()[-1]["id"]+1)" ale wartośc zmieniała się tylko przy restarcie servera
